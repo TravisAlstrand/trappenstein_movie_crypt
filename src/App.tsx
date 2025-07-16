@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
+import type { User } from "@supabase/supabase-js";
 
 // COMPONENT IMPORTS
 import Navbar from "./components/Navbar";
@@ -15,7 +16,7 @@ import MovieDetailsPage from "./pages/MovieDetailsPage";
 import ReviewRequestsPage from "./pages/ReviewRequestsPage";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // Check current session on load
@@ -33,10 +34,6 @@ function App() {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  // const handleLogout = async () => {
-  //   await supabase.auth.signOut();
-  // };
-
   if (!user) {
     return <AuthForm onAuthSuccess={() => console.log("Logged in!")} />;
   }
@@ -45,28 +42,13 @@ function App() {
     <>
       <Navbar user={user} />
       <Routes>
-        {/* Public */}
         <Route path="/" element={<LandingPage user={user} />} />
         <Route path="/login" element={<AuthForm onAuthSuccess={() => {}} />} />
-
-        {/* Protected */}
-        {user && (
-          <>
-            <Route path="/home" element={<UserHome user={user} />} />
-            <Route path="/search" element={<SearchPage user={user} />} />
-            <Route path="/watchlist" element={<WatchlistPage user={user} />} />
-            <Route
-              path="/movie/:id"
-              element={<MovieDetailsPage user={user} />}
-            />
-            <Route
-              path="/requests"
-              element={<ReviewRequestsPage user={user} />}
-            />
-          </>
-        )}
-
-        {/* Fallback */}
+        <Route path="/home" element={<UserHome user={user} />} />
+        <Route path="/search" element={<SearchPage user={user} />} />
+        <Route path="/watchlist" element={<WatchlistPage user={user} />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage user={user} />} />
+        <Route path="/requests" element={<ReviewRequestsPage user={user} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
