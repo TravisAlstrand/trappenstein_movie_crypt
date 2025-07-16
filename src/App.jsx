@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
+// COMPONENT IMPORTS
 import Navbar from "./components/Navbar";
 import AuthForm from "./components/AuthForm";
-import MovieSearch from "./components/MovieSearch";
-import Watchlist from "./components/Watchlist";
-// import LandingPage from "./components/LandingPage";
-// import Home from "./components/Home";
-// import MovieDetails from "./components/MovieDetails";
-// import ReviewRequests from "./components/ReviewRequests";
+
+// PAGE IMPORTS
+import LandingPage from "./pages/LandingPage";
+import UserHome from "./pages/UserHome";
+import SearchPage from "./pages/SearchPage";
+import WatchlistPage from "./pages/WatchlistPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
+import ReviewRequestsPage from "./pages/ReviewRequestsPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -49,11 +52,17 @@ function App() {
         {/* Protected */}
         {user && (
           <>
-            <Route path="/home" element={<Home user={user} />} />
-            <Route path="/search" element={<MovieSearch user={user} />} />
-            <Route path="/watchlist" element={<Watchlist user={user} />} />
-            <Route path="/movie/:id" element={<MovieDetails user={user} />} />
-            <Route path="/requests" element={<ReviewRequests user={user} />} />
+            <Route path="/home" element={<UserHome user={user} />} />
+            <Route path="/search" element={<SearchPage user={user} />} />
+            <Route path="/watchlist" element={<WatchlistPage user={user} />} />
+            <Route
+              path="/movie/:id"
+              element={<MovieDetailsPage user={user} />}
+            />
+            <Route
+              path="/requests"
+              element={<ReviewRequestsPage user={user} />}
+            />
           </>
         )}
 

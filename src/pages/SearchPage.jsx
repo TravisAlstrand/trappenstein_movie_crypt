@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const TMDB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie";
 
-export default function MovieSearch({ user }) {
+export default function SearchPage({ user }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [status, setStatus] = useState("");

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 
-export default function Watchlist({ user }) {
+export default function WatchlistPage({ user }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
