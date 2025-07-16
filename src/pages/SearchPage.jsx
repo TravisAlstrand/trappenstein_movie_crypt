@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 
+import MovieCard from "../components/MovieCard";
+
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const TMDB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie";
 
@@ -74,17 +76,11 @@ export default function SearchPage({ user }) {
       >
         {results.map((movie) => (
           <div key={movie.id}>
-            {movie.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-                style={{ width: "100%", borderRadius: "8px" }}
-              />
-            )}
-            <p>{movie.title}</p>
-            <button onClick={() => addToWatchlist(movie)}>
-              Add to Watchlist
-            </button>
+            <MovieCard movie={movie} linkToDetails={true}>
+              <button onClick={() => addToWatchlist(movie)}>
+                Add to Watchlist
+              </button>
+            </MovieCard>
           </div>
         ))}
       </div>
