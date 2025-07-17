@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 
-export default function AuthForm({ onAuthSuccess }) {
+type AuthFormProps = {
+  onAuthSuccess: () => void;
+};
+
+export default function AuthForm({ onAuthSuccess }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
 
@@ -16,7 +20,7 @@ export default function AuthForm({ onAuthSuccess }) {
       : await supabase.auth.signUp({ email, password });
 
     if (error) setError(error.message);
-    else onAuthSuccess(data);
+    else onAuthSuccess();
   };
 
   return (

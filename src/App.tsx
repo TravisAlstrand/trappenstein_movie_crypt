@@ -42,13 +42,13 @@ function App() {
     <>
       <Navbar user={user} />
       <Routes>
-        <Route path="/" element={<LandingPage user={user} />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<AuthForm onAuthSuccess={() => {}} />} />
         <Route path="/home" element={<UserHome user={user} />} />
         <Route path="/search" element={<SearchPage user={user} />} />
         <Route path="/watchlist" element={<WatchlistPage user={user} />} />
-        <Route path="/movie/:id" element={<MovieDetailsPage user={user} />} />
-        <Route path="/requests" element={<ReviewRequestsPage user={user} />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage />} />
+        <Route path="/requests" element={<ReviewRequestsPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

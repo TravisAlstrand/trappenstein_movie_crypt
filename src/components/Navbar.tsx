@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import type { User } from "@supabase/supabase-js";
 
-export default function Navbar({ user }) {
+type NavbarProps = {
+  user: User;
+};
+
+export default function Navbar({ user }: NavbarProps) {
   if (!user) return null;
 
   return (

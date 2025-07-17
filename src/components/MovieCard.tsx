@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ movie, linkToDetails = true, children }) {
+type MovieCardProps = {
+  movie: any; // TODO: DEFINE PROPER TYPE
+  linkToDetails?: boolean;
+  children?: React.ReactNode;
+};
+
+export default function MovieCard({
+  movie,
+  linkToDetails = true,
+  children,
+}: MovieCardProps) {
   const id = movie.movie_id || movie.id; // handle Supabase row or TMDB object
   const title = movie.movie_title || movie.title;
   const poster = movie.poster_url || movie.poster_path;
