@@ -1,32 +1,24 @@
-import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { supabase } from "./supabaseClient";
+import { useUser } from "./utils/userContext";
+
+// Components
+import Navbar from "./components/Navbar";
+
+// Pages
+import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const { user } = useUser();
 
-  useEffect(() => {
-    // Check current session on load
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    // Listen for changes
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-
-    return () => listener.subscription.unsubscribe();
-  }, []);
-
-  // const handleSignOut = async () => {
-  //   await supabase.auth.signOut();
-  //   setUser(null);
-  // };
-
-  return <></>;
+  return (
+    <>
+      <Navbar />
+      {!user && <Navigate to="/" replace />}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
