@@ -1,7 +1,7 @@
-import { User } from "@supabase/supabase-js";
+import React from "react";
 
-const UserHome = ({ user }) => {
-  return <h1>Welcome, {user.email}!</h1>;
+const UserHome = () => {
+  return <div>UserHome</div>;
 };
 
 export default UserHome;

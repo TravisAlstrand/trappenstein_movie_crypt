@@ -1,22 +1,9 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
-import { User } from "@supabase/supabase-js";
-
-// COMPONENT IMPORTS
-import Navbar from "./components/Navbar";
-import AuthForm from "./components/AuthForm";
-
-// PAGE IMPORTS
-import LandingPage from "./pages/LandingPage";
-import UserHome from "./pages/UserHome";
-import SearchPage from "./pages/SearchPage";
-import WatchlistPage from "./pages/WatchlistPage";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import ReviewRequestsPage from "./pages/ReviewRequestsPage";
 
 function App() {
-  const [user, setUser] = (useState < User) | (null > null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Check current session on load
@@ -34,30 +21,12 @@ function App() {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  if (!user) {
-    return <AuthForm />;
-  }
+  // const handleSignOut = async () => {
+  //   await supabase.auth.signOut();
+  //   setUser(null);
+  // };
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-  };
-
-  return (
-    <>
-      <Navbar user={user} onSignOut={handleSignOut} />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<AuthForm />} />
-        <Route path="/home" element={<UserHome user={user} />} />
-        <Route path="/search" element={<SearchPage user={user} />} />
-        <Route path="/watchlist" element={<WatchlistPage user={user} />} />
-        <Route path="/movie/:id" element={<MovieDetailsPage />} />
-        <Route path="/requests" element={<ReviewRequestsPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </>
-  );
+  return <></>;
 }
 
 export default App;
