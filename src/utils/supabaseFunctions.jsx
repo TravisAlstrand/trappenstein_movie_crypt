@@ -19,6 +19,6 @@ export const onAuthStateChange = (callback) => {
 };
 
 // Sign out
-export const signOut = async () => {
+export const handleSignOut = async () => {
   await supabase.auth.signOut();
 };
