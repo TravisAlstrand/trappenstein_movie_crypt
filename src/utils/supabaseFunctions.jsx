@@ -23,6 +23,11 @@ export const signUpUser = async (email, password) => {
   return await supabase.auth.signUp({ email, password });
 };
 
+// Sign in user with email and password
+export const signInUser = async (email, password) => {
+  return await supabase.auth.signInWithPassword({ email, password });
+};
+
 // Get profile by auth user ID
 export const getProfileById = async (id) => {
   const { data, error } = await supabase
