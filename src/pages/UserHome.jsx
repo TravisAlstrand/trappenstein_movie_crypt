@@ -1,10 +1,6 @@
 import { User } from "@supabase/supabase-js";
 
-type UserHomeProps = {
-  user: User;
-};
-
-const UserHome = ({ user }: UserHomeProps) => {
+const UserHome = ({ user }) => {
   return <h1>Welcome, {user.email}!</h1>;
 };
 

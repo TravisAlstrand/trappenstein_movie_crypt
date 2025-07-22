@@ -1,28 +1,18 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
-import type { User } from "@supabase/supabase-js";
-
-type SearchPageProps = {
-  user: User;
-};
-
-type Movie = {
-  id: number;
-  title: string;
-  poster_path: string | null;
-};
+import { User } from "@supabase/supabase-js";
 
 import MovieCard from "../components/MovieCard";
 
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const TMDB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie";
 
-export default function SearchPage({ user }: SearchPageProps) {
+export default function SearchPage({ user }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [status, setStatus] = useState("");
 
-  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     if (!query) return;
 
@@ -35,7 +25,7 @@ export default function SearchPage({ user }: SearchPageProps) {
     setResults(data.results || []);
   };
 
-  const addToWatchlist = async (movie: Movie) => {
+  const addToWatchlist = async (movie) => {
     // Getting the properties needed for the database
     const { id, title: movie_title, poster_path } = movie;
     // Ensuring the movie ID is a string
@@ -85,7 +75,7 @@ export default function SearchPage({ user }: SearchPageProps) {
           gap: "1rem",
         }}
       >
-        {results.map((movie: Movie) => (
+        {results.map((movie) => (
           <div key={movie.id}>
             <MovieCard movie={movie} linkToDetails={true}>
               <button onClick={() => addToWatchlist(movie)}>

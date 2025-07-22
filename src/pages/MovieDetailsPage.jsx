@@ -3,19 +3,9 @@ import { useParams } from "react-router-dom";
 
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-type Movie = {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-  release_date: string;
-  vote_average: number;
-  success: boolean;
-};
-
 export default function MovieDetailsPage() {
   const { id } = useParams();
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +14,7 @@ export default function MovieDetailsPage() {
         const res = await fetch(
           `https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}`
         );
-        const data: Movie = await res.json();
+        const data = await res.json();
         setMovie(data);
       } catch (err) {
         console.error("Error fetching movie details:", err);

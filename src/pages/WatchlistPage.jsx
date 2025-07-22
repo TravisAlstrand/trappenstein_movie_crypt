@@ -1,22 +1,9 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-import type { User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 
-type WatchlistPageProps = {
-  user: User;
-};
-
-type WatchlistMovie = {
-  id: number;
-  movie_title: string;
-  poster_url: string;
-  watched: boolean;
-  user_id: string;
-  created_at: string;
-};
-
-export default function WatchlistPage({ user }: WatchlistPageProps) {
-  const [movies, setMovies] = useState<WatchlistMovie[]>([]);
+export default function WatchlistPage({ user }) {
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,7 +28,7 @@ export default function WatchlistPage({ user }: WatchlistPageProps) {
     }
   }, [user]);
 
-  const toggleWatched = async (movie: WatchlistMovie) => {
+  const toggleWatched = async (movie) => {
     const { id, watched } = movie;
     const { error } = await supabase
       .from("watchlists")
@@ -58,7 +45,7 @@ export default function WatchlistPage({ user }: WatchlistPageProps) {
     }
   };
 
-  const handleRemove = async (movieId: number) => {
+  const handleRemove = async (movieId) => {
     const { error } = await supabase
       .from("watchlists")
       .delete()

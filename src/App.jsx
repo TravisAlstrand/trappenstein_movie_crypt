@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
-import type { User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 
 // COMPONENT IMPORTS
 import Navbar from "./components/Navbar";
@@ -16,7 +16,7 @@ import MovieDetailsPage from "./pages/MovieDetailsPage";
 import ReviewRequestsPage from "./pages/ReviewRequestsPage";
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = (useState < User) | (null > null);
 
   useEffect(() => {
     // Check current session on load
@@ -35,15 +35,20 @@ function App() {
   }, []);
 
   if (!user) {
-    return <AuthForm onAuthSuccess={() => console.log("Logged in!")} />;
+    return <AuthForm />;
   }
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+  };
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={user} onSignOut={handleSignOut} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<AuthForm onAuthSuccess={() => {}} />} />
+        <Route path="/login" element={<AuthForm />} />
         <Route path="/home" element={<UserHome user={user} />} />
         <Route path="/search" element={<SearchPage user={user} />} />
         <Route path="/watchlist" element={<WatchlistPage user={user} />} />
