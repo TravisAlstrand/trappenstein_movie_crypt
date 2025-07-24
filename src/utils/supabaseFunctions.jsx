@@ -28,26 +28,18 @@ export const signInUser = async (email, password) => {
   return await supabase.auth.signInWithPassword({ email, password });
 };
 
-// Get profile by auth user ID
-export const getProfileById = async (id) => {
+export const getProfileById = async (userId) => {
   const { data, error } = await supabase
     .from("profiles")
     .select("*")
-    .eq("id", id)
-    .single();
+    .eq("id", userId)
+    .single(); // Use .single() to get one row directly
   return { profile: data, error };
 };
 
-// Create a new user profile row
-export const createProfile = async ({ username, email, wants_emails }) => {
-  return await supabase.from("profiles").insert([
-    {
-      username,
-      email,
-      wants_emails,
-      is_admin: false,
-    },
-  ]);
+export const createProfile = async (profileData) => {
+  return supabase.from("profiles").insert(profileData).select("*").single();
+  // Return the created profile
 };
 
 // Sign out

@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { useUser } from "../utils/userContext";
-import { handleSignOut } from "../utils/supabaseFunctions"; // Assuming this function handles sign out
+import { useUser } from "../context/UserContext";
+import { useUserProfile } from "../context/UserProfileContext";
+import { handleSignOut } from "../utils/supabaseFunctions";
 
 const Navbar = () => {
   const { user } = useUser();
+  const { profile } = useUserProfile();
 
   return (
     <nav>
@@ -15,7 +17,7 @@ const Navbar = () => {
         </ul>
       ) : (
         <div>
-          <span>Welcome, {user.email}</span>
+          <span>Welcome, {profile?.username || user.email}</span>
           <ul>
             <NavLink to="/user-home">Home</NavLink>
             <NavLink to="/watchlist">Watchlist</NavLink>

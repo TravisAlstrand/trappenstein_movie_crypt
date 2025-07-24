@@ -5,13 +5,16 @@ import "./css/reset.css";
 import "./css/index.css";
 import App from "./App";
 
-import { UserProvider } from "./utils/UserProvider";
+import { UserProvider } from "./context/UserProvider";
+import { UserProfileProvider } from "./context/UserProfileProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <UserProfileProvider>
+          <App />
+        </UserProfileProvider>
       </UserProvider>
     </BrowserRouter>
   </StrictMode>

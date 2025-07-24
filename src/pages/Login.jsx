@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  signInUser,
-  getProfileById,
-  createProfile,
-} from "../utils/supabaseFunctions";
+import { signInUser } from "../utils/supabaseFunctions";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -28,20 +24,6 @@ const Login = () => {
     if (!user) {
       setError("No user found.");
       return;
-    }
-
-    // Check if profile exists
-    const { profile } = await getProfileById(user.id);
-    if (!profile) {
-      // Create profile if it doesn't exist using email prefix as default username
-      const { error: profileError } = await createProfile({
-        username: email.split("@")[0],
-        email: user.email,
-      });
-      if (profileError) {
-        setError(profileError.message);
-        return;
-      }
     }
 
     setSuccess("Login successful!");
