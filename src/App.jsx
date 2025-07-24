@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 
@@ -11,15 +11,13 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
 import UserHome from "./pages/UserHome";
+import UserSettingsPage from "./pages/UserSettingsPage";
 
 import NotFound from "./pages/NotFound";
 
 function App() {
   const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    console.log(user);
-  });
   return (
     <>
       <Navbar />
@@ -37,7 +35,9 @@ function App() {
 
         {/* Authenticated Routes */}
         <Route path="/user-home" element={<UserHome />} />
+        <Route path="/user-settings" element={<UserSettingsPage />} />
 
+        {/* Catch-all for Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
