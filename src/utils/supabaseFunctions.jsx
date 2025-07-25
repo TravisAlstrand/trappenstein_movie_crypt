@@ -42,6 +42,10 @@ export const createProfile = async (profileData) => {
   // Return the created profile
 };
 
+export const updateProfile = async (id, updates) => {
+  return await supabase.from("profiles").update(updates).eq("id", id);
+};
+
 // Sign out
 export const handleSignOut = async () => {
   await supabase.auth.signOut();

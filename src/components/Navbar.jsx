@@ -8,25 +8,32 @@ const Navbar = () => {
   const { profile } = useUserProfile();
 
   return (
-    <nav>
-      {!user ? (
-        <ul>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </ul>
-      ) : (
+    <header>
+      {user ? (
         <div>
-          <span>Welcome, {profile?.username || user.email}</span>
+          <img src={profile?.avatar_filename} className="header-avatar-img" />
+          <span>Welcome, {profile ? profile.username : user.email}</span>
+        </div>
+      ) : (
+        <></>
+      )}
+      <nav>
+        {!user ? (
+          <ul>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </ul>
+        ) : (
           <ul>
             <NavLink to="/user-home">Home</NavLink>
             <NavLink to="/watchlist">Watchlist</NavLink>
             <NavLink to="/search">Search</NavLink>
             <button onClick={() => handleSignOut()}>Sign Out</button>
           </ul>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </header>
   );
 };
 
