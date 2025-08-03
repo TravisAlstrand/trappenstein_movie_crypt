@@ -28,7 +28,7 @@ const Navbar = () => {
           <ul>
             <NavLink to="/user-home">Home</NavLink>
             <NavLink to="/watchlist">Watchlist</NavLink>
-            <NavLink to="/search">Search</NavLink>
+            <NavLink to="/movie-search">Search</NavLink>
             <button onClick={() => handleSignOut()}>Sign Out</button>
           </ul>
         )}

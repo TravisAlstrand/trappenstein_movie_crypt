@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp";
 
 import UserHome from "./pages/UserHome";
 import UserSettingsPage from "./pages/UserSettingsPage";
+import SearchPage from "./pages/SearchPage";
 
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +37,7 @@ function App() {
         {/* Authenticated Routes */}
         <Route path="/user-home" element={<UserHome />} />
         <Route path="/user-settings" element={<UserSettingsPage />} />
+        <Route path="/movie-search" element={<SearchPage />} />
 
         {/* Catch-all for Not Found */}
         <Route path="*" element={<NotFound />} />
