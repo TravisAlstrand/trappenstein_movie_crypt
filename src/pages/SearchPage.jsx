@@ -24,6 +24,7 @@ const SearchPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
+    // RESET PAGE TO 1
     setCurrentPage(1);
 
     const searchValue = e.target.search.value.trim().toLowerCase();
@@ -48,6 +49,8 @@ const SearchPage = () => {
     setCurrentPage(currentPage - 1);
   };
 
+  // RUN ANY TIME THE USER SUBMITS A SEARCH
+  // OR REQUESTS ANOTHER PAGE OF RESULTS
   useEffect(() => {
     fetchData(searchQuery, currentPage);
   }, [searchQuery, currentPage]);

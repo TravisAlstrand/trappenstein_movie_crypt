@@ -18,8 +18,8 @@ export function UserProvider({ children }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Check if user profile exists and create if not
-  // runs whenever user changes, to help with email confirmation auto logins
+  // CHECK IF USER PROFILE EXISTS AND CREATE IF NOT
+  // RUNS WHENEVER USER CHANGES, TO HELP WITH EMAIL CONFIRMATION AUTO LOGINS
   useEffect(() => {
     const createProfileIfNeeded = async () => {
       if (user) {

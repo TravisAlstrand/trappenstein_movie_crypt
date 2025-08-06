@@ -23,23 +23,23 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        {/* Variable Home Page */}
+        {/* VARIABLE HOME PAGE */}
         {user ? (
           <Route path="/" element={<Navigate to="/user-home" replace />} />
         ) : (
           <Route path="/" element={<LandingPage />} />
         )}
 
-        {/* Public Routes */}
+        {/* PUBLIC ROUTES */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Authenticated Routes */}
+        {/* AUTHENTICATED ROUTES */}
         <Route path="/user-home" element={<UserHome />} />
         <Route path="/user-settings" element={<UserSettingsPage />} />
         <Route path="/movie-search" element={<SearchPage />} />
 
-        {/* Catch-all for Not Found */}
+        {/* CATCH-ALL FOR NOT FOUND */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

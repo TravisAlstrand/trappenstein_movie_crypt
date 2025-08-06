@@ -13,7 +13,7 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // Sign in user
+    // SIGN IN USER
     const { data, error: signInError } = await signInUser(email, password);
     if (signInError) {
       setError(signInError.message);

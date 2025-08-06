@@ -13,7 +13,7 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // Sign up user
+    // SIGN UP USER
     const { error: signUpError } = await signUpUser(email, password);
     if (signUpError) {
       setError(signUpError.message);
@@ -21,7 +21,7 @@ const SignUp = () => {
     }
 
     setSuccess("Sign up successful! Please check your email to confirm.");
-    e.target.reset(); // Reset form fields
+    e.target.reset(); // RESET FORM FIELDS
   };
 
   return (
