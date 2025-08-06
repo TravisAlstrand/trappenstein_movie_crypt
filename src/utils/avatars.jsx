@@ -12,4 +12,5 @@ export const avatarOptions = [
   { filename: "/avatars/Shredderface.png", name: "Shredderface" },
   { filename: "/avatars/Regazuzu.png", name: "Regazuzu" },
   { filename: "/avatars/GroovyMcBoomstick.png", name: "Groovy McBoomstick" },
+  { filename: "/avatars/XenoMorphinTime.png", name: "XenoMorphinTime" },
 ];

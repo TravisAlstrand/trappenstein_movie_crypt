@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import MovieCard from "../components/MovieCard";
+
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const SearchPage = () => {
@@ -71,7 +73,7 @@ const SearchPage = () => {
       <section>
         {/* MOVIES */}
         {movies.length ? (
-          movies.map((movie) => <p key={movie.id}>{movie.title}</p>)
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
         ) : (
           <></>
         )}
