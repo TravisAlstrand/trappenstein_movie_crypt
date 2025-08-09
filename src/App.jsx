@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import UserHome from "./pages/UserHome";
 import UserSettingsPage from "./pages/UserSettingsPage";
 import SearchPage from "./pages/SearchPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 import NotFound from "./pages/NotFound";
 
@@ -35,9 +36,10 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* AUTHENTICATED ROUTES */}
-        <Route path="/user-home" element={<UserHome />} />
-        <Route path="/user-settings" element={<UserSettingsPage />} />
-        <Route path="/movie-search" element={<SearchPage />} />
+        <Route path="/user/home" element={<UserHome />} />
+        <Route path="/user/settings" element={<UserSettingsPage />} />
+        <Route path="/movies/search" element={<SearchPage />} />
+        <Route path="/movies/:id/details" element={<MovieDetailsPage />} />
 
         {/* CATCH-ALL FOR NOT FOUND */}
         <Route path="*" element={<NotFound />} />

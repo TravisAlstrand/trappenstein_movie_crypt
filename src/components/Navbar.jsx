@@ -26,9 +26,9 @@ const Navbar = () => {
           </ul>
         ) : (
           <ul>
-            <NavLink to="/user-home">Home</NavLink>
+            <NavLink to="/user/home">Home</NavLink>
             <NavLink to="/watchlist">Watchlist</NavLink>
-            <NavLink to="/movie-search">Search</NavLink>
+            <NavLink to="/movies/search">Search</NavLink>
             <button onClick={() => handleSignOut()}>Sign Out</button>
           </ul>
         )}

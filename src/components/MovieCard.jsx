@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MovieCard = ({ movie }) => {
   let posterURL;
   if (movie.poster_path === null) {
@@ -8,9 +10,11 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div>
-      <img src={posterURL} alt={`Poster for ${movie.title}`} />
+      <Link to={`/movies/${movie.id}/details`}>
+        <img src={posterURL} alt={`Poster for ${movie.title}`} />
+      </Link>
       <div>
-        <span>{movie.title}: </span>
+        <span>{movie.title} </span>
         <span>({movie.release_date.split("-")[0]})</span>
       </div>
     </div>
