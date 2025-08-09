@@ -4,7 +4,7 @@ const UserHome = () => {
   return (
     <>
       <h1>UserHome</h1>
-      <Link to="/user-settings">User Settings</Link>
+      <Link to="/user/settings">User Settings</Link>
     </>
   );
 };
