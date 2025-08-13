@@ -47,3 +47,22 @@ export const updateProfile = async (id, updates) => {
 export const handleSignOut = async () => {
   await supabase.auth.signOut();
 };
+
+export const handleAddMovieToWatchlist = async (movieData) => {
+  console.log(movieData);
+  return await supabase
+    .from("watchlists")
+    .insert(movieData)
+    .select("*")
+    .single();
+};
+
+export const getUserWatchlist = async (userId) => {
+  return await supabase
+    .from("watchlists")
+    .select("movie_id, movie_title, release_date, poster_url, watched")
+    .eq("user_id", userId)
+    .order("created_at", {
+      ascending: false,
+    });
+};
