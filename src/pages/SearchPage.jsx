@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import MovieCard from "../components/MovieCard";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const SearchPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("query") || "";
+  const currentPage = Number(searchParams.get("page")) || 1;
+
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState("");
 
   const fetchData = (searchValue, page) => {
@@ -26,8 +29,6 @@ const SearchPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    // RESET PAGE TO 1
-    setCurrentPage(1);
 
     const searchValue = e.target.search.value.trim().toLowerCase();
 
@@ -38,23 +39,24 @@ const SearchPage = () => {
       return;
     }
 
-    const encodedSearch = encodeURIComponent(searchValue);
-    setSearchQuery(encodedSearch);
+    setSearchParams({ query: searchValue, page: 1 });
   };
 
   const handleIncrementPage = () => {
-    setCurrentPage(currentPage + 1);
+    setSearchParams({ query: searchQuery, page: currentPage + 1 });
   };
 
   const handleDecrementPage = () => {
     if (currentPage == 1) return;
-    setCurrentPage(currentPage - 1);
+    setSearchParams({ query: searchQuery, page: currentPage - 1 });
   };
 
   // RUN ANY TIME THE USER SUBMITS A SEARCH
   // OR REQUESTS ANOTHER PAGE OF RESULTS
   useEffect(() => {
-    fetchData(searchQuery, currentPage);
+    if (searchQuery) {
+      fetchData(encodeURIComponent(searchQuery), currentPage);
+    }
   }, [searchQuery, currentPage]);
 
   return (

@@ -44,7 +44,6 @@ export const updateProfile = async (id, updates) => {
   return await supabase.from("profiles").update(updates).eq("id", id);
 };
 
-// SIGN OUT
 export const handleSignOut = async () => {
   await supabase.auth.signOut();
 };

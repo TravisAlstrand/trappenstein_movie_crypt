@@ -27,7 +27,7 @@ function App() {
       <Routes>
         {/* VARIABLE HOME PAGE */}
         {user ? (
-          <Route path="/" element={<Navigate to="/user-home" replace />} />
+          <Route path="/" element={<Navigate to="/user/home" replace />} />
         ) : (
           <Route path="/" element={<LandingPage />} />
         )}
