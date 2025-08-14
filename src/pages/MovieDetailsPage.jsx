@@ -1,16 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
-import { handleAddMovieToWatchlist } from "../utils/supabaseFunctions";
+import {
+  handleAddMovieToWatchlist,
+  checkIfMovieIsInWatchlist,
+  handleRemoveMovieFromWatchlist,
+} from "../utils/supabaseFunctions";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const MovieDetailsPage = () => {
+  const { user } = useContext(UserContext);
+
   const [movie, setMovie] = useState(null);
+  const [presentInWatchlist, setPresentInWatchlist] = useState(false);
   const [error, setError] = useState("");
 
   const { id } = useParams();
 
+  // FETCH THE REQUESTED MOVIE DATA
   useEffect(() => {
     const fetchData = () => {
       fetch(
@@ -27,7 +36,18 @@ const MovieDetailsPage = () => {
     fetchData();
   }, [id]);
 
-  const handleAddToWatchlist = async () => {
+  useEffect(() => {
+    const checkWatchList = async () => {
+      if (user && movie) {
+        const result = await checkIfMovieIsInWatchlist(user.id, movie.id);
+        setPresentInWatchlist(!!result);
+      }
+    };
+
+    checkWatchList();
+  }, [user, movie]);
+
+  const handleAddButton = async () => {
     const movieData = {
       movie_id: movie.id,
       movie_title: movie.title,
@@ -35,10 +55,30 @@ const MovieDetailsPage = () => {
       poster_url: movie.poster_path,
     };
 
-    const { error: addedError } = await handleAddMovieToWatchlist(movieData);
-    if (addedError) {
-      setError(addedError.message);
+    try {
+      const addedData = await handleAddMovieToWatchlist(movieData);
+      if (addedData.data) {
+        setPresentInWatchlist(true);
+      } else if (addedData.error) {
+        setError(addedData.error.message);
+      }
+    } catch (err) {
+      setError(err.message);
       return;
+    }
+  };
+
+  const handleRemoveButton = async () => {
+    try {
+      const removedData = await handleRemoveMovieFromWatchlist(
+        user.id,
+        movie.id
+      );
+      if (removedData) {
+        setPresentInWatchlist(false);
+      }
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -70,9 +110,16 @@ const MovieDetailsPage = () => {
         )}
       </div>
       <p>{movie.overview}</p>
-      <button type="button" onClick={handleAddToWatchlist}>
-        Add to Watchlist
-      </button>
+      {presentInWatchlist ? (
+        <button type="button" onClick={handleRemoveButton}>
+          Remove from Watchlist
+        </button>
+      ) : (
+        <button type="button" onClick={handleAddButton}>
+          Add to Watchlist
+        </button>
+      )}
+
       {error ? <p style={{ color: "red" }}>{error}</p> : <></>}
     </main>
   );

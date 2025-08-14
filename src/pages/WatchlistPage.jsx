@@ -16,7 +16,6 @@ const WatchlistPage = () => {
       setError(watchlistError.message);
       return;
     } else {
-      console.log(data);
       normalizeMovieData(data);
     }
   };
