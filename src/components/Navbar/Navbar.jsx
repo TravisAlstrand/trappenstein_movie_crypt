@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useUser } from "../context/UserContext";
-import { useUserProfile } from "../context/UserProfileContext";
-import { handleSignOut } from "../utils/supabaseFunctions";
+import { useUser } from "../../context/UserContext";
+import { useUserProfile } from "../../context/UserProfileContext";
+import { handleSignOut } from "../../utils/supabaseFunctions";
+
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user } = useUser();

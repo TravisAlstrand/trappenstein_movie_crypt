@@ -3,7 +3,7 @@ import { UserContext } from "../context/UserContext";
 
 import { getUserWatchlist } from "../utils/supabaseFunctions";
 
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/MovieCard/MovieCard";
 
 const WatchlistPage = () => {
   const { user } = useContext(UserContext);

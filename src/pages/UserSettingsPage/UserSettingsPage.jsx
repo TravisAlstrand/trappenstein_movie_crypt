@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import { useUserProfile } from "../context/UserProfileContext";
-import { updateProfile } from "../utils/supabaseFunctions";
-import { avatarOptions } from "../utils/avatars";
+import { useUserProfile } from "../../context/UserProfileContext";
+import { updateProfile } from "../../utils/supabaseFunctions";
+import { avatarOptions } from "../../utils/avatars";
+
+import "./UserSettingsPage.css";
 
 const UserSettingsPage = () => {
   const { profile, refreshProfile } = useUserProfile();
