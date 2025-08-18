@@ -21,7 +21,14 @@ const Navbar = () => {
 
   // FOR TESTING
   useEffect(() => {
-    console.log(mobileNavOpen);
+    const handleEscape = (e) => {
+      if (e.key === "Escape" && mobileNavOpen) {
+        setMobileNavOpen(false);
+      }
+    };
+
+    window.addEventListener("keyup", handleEscape);
+    return () => window.removeEventListener("keyup", handleEscape);
   }, [mobileNavOpen]);
 
   return (
@@ -44,11 +51,13 @@ const Navbar = () => {
           aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
         >
           {mobileNavOpen ? (
-            <HiOutlineX aria-hidden="true" />
+            <HiOutlineX aria-hidden="true" className="nav-btn-icon" />
           ) : (
-            <HiOutlineMenu aria-hidden="true" />
+            <HiOutlineMenu aria-hidden="true" className="nav-btn-icon" />
           )}
         </button>
+
+        {/* DESKTOP NAV */}
         <nav
           className="desktop-nav"
           role="navigation"
@@ -91,7 +100,7 @@ const Navbar = () => {
       >
         <nav role="navigation" aria-label="Mobile navigation">
           {!user ? (
-            <ul>
+            <ul className="mobile-nav-ul">
               <NavLink to="/" onClick={() => setMobileNavOpen(false)}>
                 Home
               </NavLink>
@@ -103,7 +112,7 @@ const Navbar = () => {
               </NavLink>
             </ul>
           ) : (
-            <ul>
+            <ul className="mobile-nav-ul">
               <NavLink to="/user/home" onClick={() => setMobileNavOpen(false)}>
                 Home
               </NavLink>
