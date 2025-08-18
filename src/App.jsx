@@ -37,6 +37,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* AUTHENTICATED ROUTES */}
+        {/* TODO: ADD PROTECTED ROUTE */}
         <Route path="/user/home" element={<UserHome />} />
         <Route path="/user/settings" element={<UserSettingsPage />} />
         <Route path="/user/watchlist" element={<WatchlistPage />} />

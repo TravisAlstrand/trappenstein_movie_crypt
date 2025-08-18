@@ -19,3 +19,24 @@
 
   --color-light: #f0f0f0;
 }
+
+/* UTILITY CLASSES */
+.hidden {
+  display: none;
+}
+
+.not-hidden {
+  display: flex;
+}
+
+/* GLOBAL STYLES */
+
+body,
+a,
+a:visited {
+  color: var(--color-light);
+}
+
+body {
+  background-color: var(--color-surface-a10);
+}
