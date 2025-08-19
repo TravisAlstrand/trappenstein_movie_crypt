@@ -91,9 +91,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU PANEL */}
       <div
-        className={`mobile-menu-panel ${
-          mobileNavOpen ? "not-hidden" : "hidden"
-        }`}
+        className={`mobile-menu-panel ${mobileNavOpen ? "open" : ""}`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
