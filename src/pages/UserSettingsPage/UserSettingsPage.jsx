@@ -33,6 +33,10 @@ const UserSettingsPage = () => {
     }
   };
 
+  if (!profile) {
+    return <main>Loading...</main>;
+  }
+
   return (
     <main>
       <h1>User Settings</h1>

@@ -37,7 +37,12 @@ const Navbar = () => {
         {user ? (
           <div className="header-welcome">
             <img src={profile?.avatar_filename} className="header-avatar-img" />
-            <span>Welcome, {profile ? profile.username : user.email}</span>
+            <div>
+              <p>Welcome, </p>
+              <p className="welcome-name">
+                {profile ? profile.username : user.email}
+              </p>
+            </div>
           </div>
         ) : (
           <></>
@@ -64,13 +69,13 @@ const Navbar = () => {
           aria-label="Main navigation"
         >
           {!user ? (
-            <ul>
+            <ul className="desktop-nav-ul">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/login">Login</NavLink>
               <NavLink to="/signup">Sign Up</NavLink>
             </ul>
           ) : (
-            <ul>
+            <ul className="desktop-nav-ul">
               <NavLink to="/user/home">Home</NavLink>
               <NavLink to="/user/watchlist">Watchlist</NavLink>
               <NavLink to="/movies/search">Search</NavLink>
@@ -83,7 +88,7 @@ const Navbar = () => {
       {/* MOBILE MENU OVERLAY */}
       <div
         className={`mobile-menu-overlay ${
-          mobileNavOpen ? "not-hidden" : "hidden"
+          mobileNavOpen ? "not-hidden-flex" : "hidden"
         }`}
         aria-hidden="true"
         onClick={() => setMobileNavOpen(false)}

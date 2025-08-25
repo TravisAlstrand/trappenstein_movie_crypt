@@ -14,7 +14,7 @@ import UserHome from "./pages/UserHome";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import WatchlistPage from "./pages/WatchlistPage";
 import SearchPage from "./pages/SearchPage";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 
 import NotFound from "./pages/NotFound";
 

@@ -20,12 +20,44 @@
   --color-light: #f0f0f0;
 }
 
+/* RESPONSIVE CLAMPED FONT SIZE */
+/* ALLOWS USE OF REMS THROUGHOUT TO STAY CONSISTENT */
+html {
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 64px);
+}
+
+h2 {
+  font-size: clamp(24px, 3vw, 40px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-size: clamp(16px, 1.2vw, 20px);
+}
+
 /* UTILITY CLASSES */
 .hidden {
   display: none;
 }
 
-.not-hidden {
+.not-hidden-flex {
   display: flex;
 }
 

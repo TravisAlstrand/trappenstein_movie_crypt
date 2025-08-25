@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 import {
   handleAddMovieToWatchlist,
   checkIfMovieIsInWatchlist,
   handleRemoveMovieFromWatchlist,
-} from "../utils/supabaseFunctions";
+} from "../../utils/supabaseFunctions";
+
+import "./MovieDetailsPage.css";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
