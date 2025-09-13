@@ -89,40 +89,43 @@ const MovieDetailsPage = () => {
   }
 
   return (
-    <main>
+    <main className="movie-details-main">
       <img
         src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
         alt={`Movie poster for ${movie.title}`}
+        className="movie-backdrop"
       />
-      <h1>{movie.title}</h1>
-      <p>{movie.release_date.split("-")[0]}</p>
-      <p>
-        <em>{movie.tagline}</em>
-      </p>
-      <div>
-        {movie.genres.length ? (
-          movie.genres.map((genre, index) => (
-            <span key={genre.id}>
-              {genre.name}
-              {index !== movie.genres.length - 1 && " - "}
-            </span>
-          ))
+      <div className="text-container">
+        <h1 className="movie-title">{movie.title}</h1>
+        <p className="release-date">{movie.release_date.split("-")[0]}</p>
+        <p className="tagline">
+          <em>{movie.tagline}</em>
+        </p>
+        <div className="genres">
+          {movie.genres.length ? (
+            movie.genres.map((genre, index) => (
+              <span key={genre.id} className="genre">
+                {genre.name}
+                {index !== movie.genres.length - 1 && " - "}
+              </span>
+            ))
+          ) : (
+            <></>
+          )}
+        </div>
+        <p className="overview">{movie.overview}</p>
+        {presentInWatchlist ? (
+          <button type="button" onClick={handleRemoveButton}>
+            Remove from Watchlist
+          </button>
         ) : (
-          <></>
+          <button type="button" onClick={handleAddButton}>
+            Add to Watchlist
+          </button>
         )}
-      </div>
-      <p>{movie.overview}</p>
-      {presentInWatchlist ? (
-        <button type="button" onClick={handleRemoveButton}>
-          Remove from Watchlist
-        </button>
-      ) : (
-        <button type="button" onClick={handleAddButton}>
-          Add to Watchlist
-        </button>
-      )}
 
-      {error ? <p style={{ color: "red" }}>{error}</p> : <></>}
+        {error ? <p style={{ color: "red" }}>{error}</p> : <></>}
+      </div>
     </main>
   );
 };

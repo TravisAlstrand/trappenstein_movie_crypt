@@ -18,6 +18,8 @@
   --color-surface-a50: #8b8b8b;
 
   --color-light: #f0f0f0;
+
+  --color-error: #ff4d4d;
 }
 
 /* RESPONSIVE CLAMPED FONT SIZE */

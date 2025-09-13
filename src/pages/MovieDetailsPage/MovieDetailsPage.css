@@ -1,0 +1,32 @@
+.movie-backdrop,
+.tagline,
+.genres {
+  margin-bottom: 1rem;
+}
+
+.release-date,
+.genre {
+  font-weight: bold;
+}
+
+.movie-details-main {
+  text-align: center;
+}
+
+.text-container {
+  padding: 1rem;
+}
+
+.movie-title {
+  font-family: "Metal Mania", system-ui;
+  font-size: 2rem;
+}
+
+.tagline {
+  font-size: 0.75rem;
+}
+
+.overview {
+  margin-bottom: 2rem;
+  text-align: left;
+}

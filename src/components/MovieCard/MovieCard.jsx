@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./MovieCard.css";
 
 const MovieCard = ({ movie }) => {
   let posterURL;
@@ -9,15 +10,17 @@ const MovieCard = ({ movie }) => {
   }
 
   return (
-    <div>
-      <Link to={`/movies/${movie.id}/details`}>
-        <img src={posterURL} alt={`Poster for ${movie.title}`} />
-      </Link>
-      <div>
-        <span>{movie.title} </span>
-        <span>({movie.release_date.split("-")[0]})</span>
+    <Link to={`/movies/${movie.id}/details`} className="movie-card">
+      <img
+        src={posterURL}
+        alt={`Poster for ${movie.title}`}
+        className="card-movie-poster"
+      />
+      <div className="card-text">
+        <p className="card-movie-title">{movie.title}</p>
+        <p>({movie.release_date.split("-")[0]})</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

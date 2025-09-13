@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import MovieCard from "../components/MovieCard/MovieCard";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import "./SearchPage.css";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -20,7 +21,6 @@ const SearchPage = () => {
       .then((res) => res.json())
       .then((res) => {
         const sorted = res.results.sort((a, b) => b.popularity - a.popularity);
-        console.log(sorted);
         setMovies(sorted);
       })
       .catch((err) => console.error(err));
@@ -31,10 +31,7 @@ const SearchPage = () => {
     setError("");
 
     const searchValue = e.target.search.value.trim().toLowerCase();
-
-    // IF THE USER SUBMITS AN EMPTY STRING...
-    if (searchValue == "") {
-      e.target.search.value = "";
+    if (searchValue === "") {
       setError("Please provide a search value");
       return;
     }
@@ -47,12 +44,11 @@ const SearchPage = () => {
   };
 
   const handleDecrementPage = () => {
-    if (currentPage == 1) return;
-    setSearchParams({ query: searchQuery, page: currentPage - 1 });
+    if (currentPage > 1) {
+      setSearchParams({ query: searchQuery, page: currentPage - 1 });
+    }
   };
 
-  // RUN ANY TIME THE USER SUBMITS A SEARCH
-  // OR REQUESTS ANOTHER PAGE OF RESULTS
   useEffect(() => {
     if (searchQuery) {
       fetchData(encodeURIComponent(searchQuery), currentPage);
@@ -60,46 +56,45 @@ const SearchPage = () => {
   }, [searchQuery, currentPage]);
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="search">Search Movies</label>
+    <main className="search-page">
+      {/* SEARCH BAR */}
+      <form onSubmit={handleSubmit} className="search-form">
         <input
           type="search"
           id="search"
           name="search"
-          placeholder="Friday the 13th"
+          placeholder="Search movies..."
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="search-btn">
+          🔍
+        </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <section>
-        {/* MOVIES */}
-        {movies.length ? (
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
-        ) : (
-          <></>
-        )}
-        {/* PAGINATION */}
-        {movies.length ? (
-          <div>
-            {/* DISABLE PREVIOUS BUTTON IF ON FIRST PAGE */}
-            {currentPage === 1 ? (
-              <button type="button" disabled>
-                &lt;
-              </button>
-            ) : (
-              <button type="button" onClick={handleDecrementPage}>
-                &lt;
-              </button>
-            )}
-            <button type="button" onClick={handleIncrementPage}>
-              &gt;
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
+
+      {error && <p className="error-text">{error}</p>}
+
+      {/* MOVIE RESULTS */}
+      <section className="results-grid">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </section>
+
+      {/* PAGINATION */}
+      {movies.length > 0 && (
+        <div className="pagination">
+          <button
+            type="button"
+            disabled={currentPage === 1}
+            onClick={handleDecrementPage}
+          >
+            &lt;
+          </button>
+          <span>Page {currentPage}</span>
+          <button type="button" onClick={handleIncrementPage}>
+            &gt;
+          </button>
+        </div>
+      )}
     </main>
   );
 };

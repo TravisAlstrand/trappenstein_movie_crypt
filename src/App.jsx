@@ -13,7 +13,7 @@ import SignUp from "./pages/SignUp";
 import UserHome from "./pages/UserHome";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import WatchlistPage from "./pages/WatchlistPage";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 
 import NotFound from "./pages/NotFound";
