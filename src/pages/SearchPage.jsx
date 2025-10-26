@@ -55,24 +55,28 @@ const SearchPage = () => {
   }, [searchQuery, currentPage]);
 
   return (
-    <main className="search-page">
+    <main className="flex h-full flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
       {/* SEARCH BAR */}
-      <form onSubmit={handleSubmit} className="search-form">
+      <form className="mb-8 flex w-full justify-center" onSubmit={handleSubmit}>
         <input
+          className="mr-4 w-64 rounded-full bg-neutral-100 p-2 pl-4"
           type="search"
           id="search"
           name="search"
           placeholder="Search movies..."
         />
-        <button type="submit" className="search-btn">
+        <button
+          className="h-auto w-12 rounded-2xl border-2 bg-neutral-700"
+          type="submit"
+        >
           🔍
         </button>
       </form>
 
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="text-red-400">{error}</p>}
 
       {/* MOVIE RESULTS */}
-      <section className="results-grid">
+      <section className="grid w-full grid-cols-2 gap-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
@@ -80,19 +84,24 @@ const SearchPage = () => {
 
       {/* PAGINATION */}
       {movies.length > 0 && (
-        <div className="pagination">
+        <section className="text-white">
           <button
+            className="cursor-pointer hover:text-neutral-200"
             type="button"
             disabled={currentPage === 1}
             onClick={handleDecrementPage}
           >
             &lt;
           </button>
-          <span>Page {currentPage}</span>
-          <button type="button" onClick={handleIncrementPage}>
+          <span className="mx-4">Page {currentPage}</span>
+          <button
+            className="cursor-pointer hover:text-neutral-200"
+            type="button"
+            onClick={handleIncrementPage}
+          >
             &gt;
           </button>
-        </div>
+        </section>
       )}
     </main>
   );
