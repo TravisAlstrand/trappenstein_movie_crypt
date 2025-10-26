@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./global_css/reset.css";
-import "./global_css/index.css";
+import "./global_css/app.css";
 import App from "./App";
 
 import { UserProvider } from "./context/UserProvider";
@@ -17,5 +17,5 @@ createRoot(document.getElementById("root")).render(
         </UserProfileProvider>
       </UserProvider>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

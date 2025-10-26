@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 import {
   handleAddMovieToWatchlist,
   checkIfMovieIsInWatchlist,
   handleRemoveMovieFromWatchlist,
-} from "../../utils/supabaseFunctions";
+} from "../utils/supabaseFunctions";
 
 import "./MovieDetailsPage.css";
 
@@ -25,7 +25,7 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const fetchData = () => {
       fetch(
-        `https://api.themoviedb.org/3/movie/${id}?language=en-US'&api_key=${apiKey}`
+        `https://api.themoviedb.org/3/movie/${id}?language=en-US'&api_key=${apiKey}`,
       )
         .then((res) => res.json())
         .then((data) => {
@@ -74,7 +74,7 @@ const MovieDetailsPage = () => {
     try {
       const removedData = await handleRemoveMovieFromWatchlist(
         user.id,
-        movie.id
+        movie.id,
       );
       if (removedData) {
         setPresentInWatchlist(false);

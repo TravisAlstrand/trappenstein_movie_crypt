@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { useUserProfile } from "../../context/UserProfileContext";
-import { updateProfile } from "../../utils/supabaseFunctions";
-import { avatarOptions } from "../../utils/avatars";
+import { useUserProfile } from "../context/UserProfileContext";
+import { updateProfile } from "../utils/supabaseFunctions";
+import { avatarOptions } from "../utils/avatars";
 
 import "./UserSettingsPage.css";
 
@@ -11,7 +11,7 @@ const UserSettingsPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState(
-    profile ? profile.avatar_filename : null
+    profile ? profile.avatar_filename : null,
   );
 
   const handleSubmit = async (e) => {

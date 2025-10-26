@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
-import { useUserProfile } from "../../context/UserProfileContext";
-import { handleSignOut } from "../../utils/supabaseFunctions";
+import { useUser } from "../context/UserContext";
+import { useUserProfile } from "../context/UserProfileContext";
+import { handleSignOut } from "../utils/supabaseFunctions";
 
 import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineX } from "react-icons/hi";
