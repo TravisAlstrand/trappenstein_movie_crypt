@@ -8,8 +8,6 @@ import {
   handleRemoveMovieFromWatchlist,
 } from "../utils/supabaseFunctions";
 
-import "./MovieDetailsPage.css";
-
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const MovieDetailsPage = () => {

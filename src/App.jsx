@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 
 // Components
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
 
 // Pages
 import LandingPage from "./pages/LandingPage";
@@ -11,10 +11,10 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
 import UserHome from "./pages/UserHome";
-import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
+import UserSettingsPage from "./pages/UserSettingsPage";
 import WatchlistPage from "./pages/WatchlistPage";
-import SearchPage from "./pages/SearchPage/SearchPage";
-import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
+import SearchPage from "./pages/SearchPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 import NotFound from "./pages/NotFound";
 

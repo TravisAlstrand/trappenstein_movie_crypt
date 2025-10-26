@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "./MovieCard.css";
 
 const MovieCard = ({ movie }) => {
   let posterURL;

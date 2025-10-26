@@ -7,8 +7,6 @@ import { handleSignOut } from "../utils/supabaseFunctions";
 import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineX } from "react-icons/hi";
 
-import "./Navbar.css";
-
 const Navbar = () => {
   const { user } = useUser();
   const { profile } = useUserProfile();

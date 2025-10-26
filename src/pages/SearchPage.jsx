@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import MovieCard from "../../components/MovieCard/MovieCard";
-import "./SearchPage.css";
+import MovieCard from "../components/MovieCard";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -16,7 +15,7 @@ const SearchPage = () => {
 
   const fetchData = (searchValue, page) => {
     fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=${page}&api_key=${apiKey}`
+      `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=${page}&api_key=${apiKey}`,
     )
       .then((res) => res.json())
       .then((res) => {
