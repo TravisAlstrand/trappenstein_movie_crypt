@@ -31,18 +31,18 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="bg-gray-900 px-4 py-3 text-gray-100 shadow-lg">
+      <header className="bg-neutral-900 px-4 py-3 font-montserrat text-gray-100 shadow-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {user ? (
             <div className="flex items-center gap-4">
               <img
                 src={profile?.avatar_filename}
-                className="h-12 w-12 rounded-full border-2 border-gray-700"
+                className="h-14 w-14 rounded-full border-2 border-gray-700"
                 alt="User avatar"
               />
               <div className="text-sm">
-                <p className="text-gray-400">Welcome,</p>
-                <p className="font-medium">
+                <p className="text-neutral-200">Welcome,</p>
+                <p className="font-metal text-lg font-medium">
                   {profile ? profile.username : user.email}
                 </p>
               </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
 
           {/* Mobile Nav Button */}
           <button
-            className="text-2xl transition-colors hover:text-gray-300 lg:hidden"
+            className="cursor-pointer text-2xl transition-colors hover:text-gray-300 lg:hidden"
             onClick={toggleMenu}
             aria-expanded={mobileNavOpen}
             aria-controls="mobile-menu"
@@ -144,7 +144,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {mobileNavOpen && (
         <div
-          className="bg-opacity-50 fixed inset-0 z-40 bg-black"
+          className="fixed inset-0 z-40 bg-black opacity-50"
           aria-hidden="true"
           onClick={() => setMobileNavOpen(false)}
         />
@@ -155,11 +155,20 @@ const Navbar = () => {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
-        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-gray-900 p-6 transition-transform duration-200 ease-in-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-neutral-800 p-6 transition-transform duration-200 ease-in-out ${
           mobileNavOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav>
+        {/* Add Close Button */}
+        <button
+          onClick={() => setMobileNavOpen(false)}
+          className="absolute top-4 right-4 cursor-pointer text-2xl text-white transition-colors hover:text-neutral-200"
+          aria-label="Close menu"
+        >
+          <HiOutlineX />
+        </button>
+
+        <nav className="mt-12">
           {!user ? (
             <ul className="flex flex-col gap-6">
               <NavLink
@@ -233,7 +242,7 @@ const Navbar = () => {
               </NavLink>
               <button
                 onClick={() => handleSignOut()}
-                className="rounded-lg bg-gray-800 px-4 py-2 text-left transition-colors hover:bg-gray-700"
+                className="cursor-pointer rounded-lg bg-neutral-600 px-4 py-2 text-left text-white transition-colors hover:bg-neutral-500"
               >
                 Sign Out
               </button>
