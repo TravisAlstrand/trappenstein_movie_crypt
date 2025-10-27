@@ -31,13 +31,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="bg-neutral-900 px-4 py-3 font-montserrat text-gray-100 shadow-xl">
+      <header className="bg-neutral-900 px-4 py-3 font-montserrat text-neutral-100 shadow-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {user ? (
             <div className="flex items-center gap-4">
               <img
                 src={profile?.avatar_filename}
-                className="h-14 w-14 rounded-full border-2 border-gray-700"
+                className="h-14 w-14 rounded-full border-2 border-neutral-500"
                 alt="User avatar"
               />
               <div className="text-sm">
@@ -53,7 +53,7 @@ const Navbar = () => {
 
           {/* Mobile Nav Button */}
           <button
-            className="cursor-pointer text-2xl transition-colors hover:text-gray-300 lg:hidden"
+            className="cursor-pointer text-2xl transition-colors hover:text-neutral-300 lg:hidden"
             onClick={toggleMenu}
             aria-expanded={mobileNavOpen}
             aria-controls="mobile-menu"
@@ -69,7 +69,7 @@ const Navbar = () => {
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <NavLink
                   to="/signup"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <NavLink
                   to="/user/home"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -112,7 +112,7 @@ const Navbar = () => {
                 <NavLink
                   to="/user/watchlist"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -122,7 +122,7 @@ const Navbar = () => {
                 <NavLink
                   to="/movies/search"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-gray-300 ${
+                    `transition-colors hover:text-neutral-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -131,7 +131,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   onClick={() => handleSignOut()}
-                  className="rounded-lg bg-gray-800 px-4 py-2 transition-colors hover:bg-gray-700"
+                  className="cursor-pointer rounded-lg bg-neutral-800 px-4 py-2 transition-colors hover:bg-neutral-700"
                 >
                   Sign Out
                 </button>
@@ -155,11 +155,10 @@ const Navbar = () => {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
-        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-neutral-800 p-6 transition-transform duration-200 ease-in-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-neutral-800 p-6 font-montserrat transition-transform duration-200 ease-in-out ${
           mobileNavOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Add Close Button */}
         <button
           onClick={() => setMobileNavOpen(false)}
           className="absolute top-4 right-4 cursor-pointer text-2xl text-white transition-colors hover:text-neutral-200"
@@ -175,7 +174,7 @@ const Navbar = () => {
                 to="/"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }
@@ -186,7 +185,7 @@ const Navbar = () => {
                 to="/login"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }
@@ -197,7 +196,7 @@ const Navbar = () => {
                 to="/signup"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }
@@ -211,7 +210,7 @@ const Navbar = () => {
                 to="/user/home"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }
@@ -222,7 +221,7 @@ const Navbar = () => {
                 to="/user/watchlist"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }
@@ -233,7 +232,7 @@ const Navbar = () => {
                 to="/movies/search"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-gray-100 transition-colors hover:text-gray-300 ${
+                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
                     isActive ? "text-blue-400" : ""
                   }`
                 }

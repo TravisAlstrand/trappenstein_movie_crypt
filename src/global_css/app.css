@@ -3,4 +3,6 @@
 @theme {
   --font-montserrat: "Montserrat", sans-serif;
   --font-metal: "Metal Mania", system-ui;
+
+  --auto-fit: repeat(auto-fit, minmax(300px, 1fr));
 }

@@ -55,7 +55,7 @@ const SearchPage = () => {
   }, [searchQuery, currentPage]);
 
   return (
-    <main className="flex h-full flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
+    <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
       {/* SEARCH BAR */}
       <form className="mb-8 flex w-full justify-center" onSubmit={handleSubmit}>
         <input
@@ -66,7 +66,7 @@ const SearchPage = () => {
           placeholder="Search movies..."
         />
         <button
-          className="h-auto w-12 rounded-2xl border-2 bg-neutral-700"
+          className="h-auto w-12 cursor-pointer rounded-2xl border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600"
           type="submit"
         >
           🔍
@@ -76,7 +76,7 @@ const SearchPage = () => {
       {error && <p className="text-red-400">{error}</p>}
 
       {/* MOVIE RESULTS */}
-      <section className="grid w-full grid-cols-2 gap-4">
+      <section className="grid w-full grid-cols-2 place-items-center gap-4 md:grid-cols-3 lg:grid-cols-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
@@ -86,7 +86,7 @@ const SearchPage = () => {
       {movies.length > 0 && (
         <section className="text-white">
           <button
-            className="cursor-pointer hover:text-neutral-200"
+            className="w-8 cursor-pointer rounded-full border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
             type="button"
             disabled={currentPage === 1}
             onClick={handleDecrementPage}
@@ -95,7 +95,7 @@ const SearchPage = () => {
           </button>
           <span className="mx-4">Page {currentPage}</span>
           <button
-            className="cursor-pointer hover:text-neutral-200"
+            className="w-8 cursor-pointer rounded-full border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
             type="button"
             onClick={handleIncrementPage}
           >

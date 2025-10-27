@@ -9,14 +9,17 @@ const MovieCard = ({ movie }) => {
   }
 
   return (
-    <Link to={`/movies/${movie.id}/details`} className="movie-card">
+    <Link
+      to={`/movies/${movie.id}/details`}
+      className="mb-8 flex cursor-pointer flex-col items-center"
+    >
       <img
         src={posterURL}
         alt={`Poster for ${movie.title}`}
-        className="card-movie-poster"
+        className="mb-4 max-w-[200px] rounded-lg shadow-2xl transition-transform hover:scale-110"
       />
-      <div className="card-text">
-        <p className="card-movie-title">{movie.title}</p>
+      <div className="max-w-[200px] text-center text-white">
+        <p className="truncate">{movie.title}</p>
         <p>({movie.release_date.split("-")[0]})</p>
       </div>
     </Link>
