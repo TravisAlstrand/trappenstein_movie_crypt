@@ -16,9 +16,9 @@ const MovieCard = ({ movie }) => {
       <img
         src={posterURL}
         alt={`Poster for ${movie.title}`}
-        className="mb-4 max-w-[200px] rounded-lg shadow-2xl transition-transform hover:scale-110"
+        className="max-w-[200px] rounded-t-lg shadow-2xl transition-transform duration-300 hover:scale-110"
       />
-      <div className="max-w-[200px] text-center text-white">
+      <div className="h-full w-full max-w-[200px] rounded-b-lg bg-neutral-700 px-2 py-4 text-center text-sm text-white">
         <p className="truncate">{movie.title}</p>
         <p>({movie.release_date.split("-")[0]})</p>
       </div>

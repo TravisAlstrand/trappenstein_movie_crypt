@@ -39,11 +39,13 @@ const SearchPage = () => {
   };
 
   const handleIncrementPage = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setSearchParams({ query: searchQuery, page: currentPage + 1 });
   };
 
   const handleDecrementPage = () => {
     if (currentPage > 1) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setSearchParams({ query: searchQuery, page: currentPage - 1 });
     }
   };
