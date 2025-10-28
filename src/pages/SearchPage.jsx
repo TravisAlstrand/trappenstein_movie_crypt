@@ -58,10 +58,11 @@ const SearchPage = () => {
 
   return (
     <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
+      <h1 className="py-8 text-center text-4xl text-white">Movie Search</h1>
       {/* SEARCH BAR */}
       <form className="mb-8 flex w-full justify-center" onSubmit={handleSubmit}>
         <input
-          className="mr-4 w-64 rounded-full bg-neutral-100 p-2 pl-4"
+          className="mr-4 w-64 rounded-2xl bg-neutral-100 p-2 pl-4"
           type="search"
           id="search"
           name="search"
