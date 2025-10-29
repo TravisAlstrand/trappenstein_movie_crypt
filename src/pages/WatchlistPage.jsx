@@ -9,9 +9,11 @@ const WatchlistPage = () => {
   const { user } = useContext(UserContext);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const getWatchlist = async () => {
     const { data, error: watchlistError } = await getUserWatchlist(user.id);
+    setLoading(false);
     if (watchlistError) {
       setError(watchlistError.message);
       return;
@@ -39,14 +41,14 @@ const WatchlistPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (movies.length === 0) {
-    return <main>Loading...</main>;
+  if (loading) {
+    return <main className="flex justify-center text-white">Loading...</main>;
   }
 
   return (
     <main className="h-full min-h-screen bg-neutral-800 font-montserrat">
       <h1 className="py-8 text-center text-4xl text-white">Your Watchlist</h1>
-      <section className="grid w-full grid-cols-2 place-items-center gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <section className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

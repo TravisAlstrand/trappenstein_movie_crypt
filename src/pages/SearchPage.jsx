@@ -79,7 +79,7 @@ const SearchPage = () => {
       {error && <p className="text-red-400">{error}</p>}
 
       {/* MOVIE RESULTS */}
-      <section className="grid w-full grid-cols-2 place-items-center gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <section className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
