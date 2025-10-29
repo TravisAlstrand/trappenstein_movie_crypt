@@ -42,7 +42,11 @@ const WatchlistPage = () => {
   }, []);
 
   if (loading) {
-    return <main className="flex justify-center text-white">Loading...</main>;
+    return (
+      <main className="flex justify-center font-montserrat text-white">
+        Loading...
+      </main>
+    );
   }
 
   return (

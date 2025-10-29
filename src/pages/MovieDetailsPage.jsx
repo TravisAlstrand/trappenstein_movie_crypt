@@ -83,26 +83,30 @@ const MovieDetailsPage = () => {
   };
 
   if (!movie) {
-    return <main>Loading...</main>;
+    return (
+      <main className="flex justify-center font-montserrat text-white">
+        Loading...
+      </main>
+    );
   }
 
   return (
-    <main className="movie-details-main">
+    <main className="mx-auto h-full min-h-screen w-full max-w-7xl bg-neutral-800 font-montserrat text-white">
       <img
         src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
         alt={`Movie poster for ${movie.title}`}
-        className="movie-backdrop"
+        className="mb-8"
       />
-      <div className="text-container">
-        <h1 className="movie-title">{movie.title}</h1>
-        <p className="release-date">{movie.release_date.split("-")[0]}</p>
-        <p className="tagline">
+      <section className="text-center">
+        <h1 className="mb-4 font-metal text-5xl">{movie.title}</h1>
+        <p className="mb-4 text-3xl">{movie.release_date.split("-")[0]}</p>
+        <p>
           <em>{movie.tagline}</em>
         </p>
-        <div className="genres">
+        <div>
           {movie.genres.length ? (
             movie.genres.map((genre, index) => (
-              <span key={genre.id} className="genre">
+              <span key={genre.id}>
                 {genre.name}
                 {index !== movie.genres.length - 1 && " - "}
               </span>
@@ -111,7 +115,7 @@ const MovieDetailsPage = () => {
             <></>
           )}
         </div>
-        <p className="overview">{movie.overview}</p>
+        <p>{movie.overview}</p>
         {presentInWatchlist ? (
           <button type="button" onClick={handleRemoveButton}>
             Remove from Watchlist
@@ -123,7 +127,7 @@ const MovieDetailsPage = () => {
         )}
 
         {error ? <p style={{ color: "red" }}>{error}</p> : <></>}
-      </div>
+      </section>
     </main>
   );
 };
