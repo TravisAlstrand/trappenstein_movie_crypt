@@ -9,8 +9,9 @@ const LandingPage = () => {
           Trappenstein's Movie Crypt
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-gray-300 md:text-xl">
-          A place where you can search movies, save them to a watchlist, rate
-          them, and request reviews.
+          Welcome to the crypt! Search for your favorite horror flicks, build
+          your ultimate watchlist, rate the films that haunt your nightmares,
+          and request reviews from yours truly, Trappenstein!
         </p>
 
         {/* CTA Buttons */}

@@ -21,6 +21,7 @@ Trappenstein's Movie Crypt is a full-stack React application that allows users t
 - ⭐ **Movie Ratings** - Rate and review movies
 - 💬 **Review Requests** - Request Trappenstein to review specific movies
 - 🎯 **Community Features** - Connect with other horror movie fans
+- 🔑 **Google Sign-In** - Quick account creation with Google authentication
 
 ## 🛠️ Tech Stack
 
