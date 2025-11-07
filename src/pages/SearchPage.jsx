@@ -58,18 +58,20 @@ const SearchPage = () => {
 
   return (
     <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
-      <h1 className="py-8 text-center text-4xl text-white">Movie Search</h1>
+      <h1 className="mb-6 font-metal text-5xl text-white md:text-6xl">
+        Movie Search
+      </h1>
       {/* SEARCH BAR */}
       <form className="mb-8 flex w-full justify-center" onSubmit={handleSubmit}>
         <input
-          className="mr-4 w-64 rounded-2xl bg-neutral-100 p-2 pl-4"
+          className="mr-2 w-full rounded-lg bg-neutral-700 px-4 py-2 text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
           type="search"
           id="search"
           name="search"
           placeholder="Search movies..."
         />
         <button
-          className="h-auto w-12 cursor-pointer rounded-2xl border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600"
+          className="h-auto w-12 cursor-pointer rounded-lg border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600"
           type="submit"
         >
           🔍
@@ -89,7 +91,7 @@ const SearchPage = () => {
       {movies.length > 0 && (
         <section className="text-white">
           <button
-            className="w-8 cursor-pointer rounded-full border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
+            className="w-8 cursor-pointer rounded-lg border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
             type="button"
             disabled={currentPage === 1}
             onClick={handleDecrementPage}
@@ -98,7 +100,7 @@ const SearchPage = () => {
           </button>
           <span className="mx-4">Page {currentPage}</span>
           <button
-            className="w-8 cursor-pointer rounded-full border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
+            className="w-8 cursor-pointer rounded-lg border-2 border-white bg-neutral-700 transition-all hover:scale-110 hover:bg-neutral-600 hover:text-neutral-200"
             type="button"
             onClick={handleIncrementPage}
           >

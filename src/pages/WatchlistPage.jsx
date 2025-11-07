@@ -50,8 +50,10 @@ const WatchlistPage = () => {
   }
 
   return (
-    <main className="h-full min-h-screen bg-neutral-800 font-montserrat">
-      <h1 className="py-8 text-center text-4xl text-white">Your Watchlist</h1>
+    <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
+      <h1 className="mb-6 font-metal text-5xl text-white md:text-6xl">
+        Your Watchlist
+      </h1>
       <section className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
