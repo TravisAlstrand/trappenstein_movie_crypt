@@ -48,7 +48,7 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="text-xl font-bold">Logo</div>
+            <div className="text-xl font-bold">Welcome!</div>
           )}
 
           {/* Mobile Nav Button */}
