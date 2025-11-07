@@ -97,13 +97,13 @@ const MovieDetailsPage = () => {
         alt={`Movie poster for ${movie.title}`}
         className="mb-8"
       />
-      <section className="text-center">
+      <section className="flex flex-col items-center text-center">
         <h1 className="mb-4 font-metal text-5xl">{movie.title}</h1>
         <p className="mb-4 text-3xl">{movie.release_date.split("-")[0]}</p>
-        <p>
+        <p className="mb-4">
           <em>{movie.tagline}</em>
         </p>
-        <div>
+        <div className="mb-4">
           {movie.genres.length ? (
             movie.genres.map((genre, index) => (
               <span key={genre.id}>
@@ -115,13 +115,21 @@ const MovieDetailsPage = () => {
             <></>
           )}
         </div>
-        <p>{movie.overview}</p>
+        <p className="mb-8 max-w-4xl">{movie.overview}</p>
         {presentInWatchlist ? (
-          <button type="button" onClick={handleRemoveButton}>
+          <button
+            className="cursor-pointer rounded-lg bg-red-600 px-8 py-3 font-semibold shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-red-700"
+            type="button"
+            onClick={handleRemoveButton}
+          >
             Remove from Watchlist
           </button>
         ) : (
-          <button type="button" onClick={handleAddButton}>
+          <button
+            className="cursor-pointer rounded-lg bg-blue-600 px-8 py-3 font-semibold shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-blue-700"
+            type="button"
+            onClick={handleAddButton}
+          >
             Add to Watchlist
           </button>
         )}
