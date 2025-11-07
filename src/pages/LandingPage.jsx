@@ -9,7 +9,7 @@ const LandingPage = () => {
           Trappenstein's Movie Crypt
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-gray-300 md:text-xl">
-          A place where people can search movies, save them to a watchlist, rate
+          A place where you can search movies, save them to a watchlist, rate
           them, and request reviews.
         </p>
 
