@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { useUserProfile } from "../context/UserProfileContext";
 import { handleSignOut } from "../utils/supabaseFunctions";
@@ -35,19 +35,21 @@ const Navbar = () => {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {user ? (
             <div className="flex items-center gap-4">
-              {user.avatar_filename ? (
-                <img
-                  src={profile?.avatar_filename}
-                  className="h-14 w-14 rounded-full border-2 border-neutral-500"
-                  alt="User avatar"
-                />
-              ) : (
-                <img
-                  src="./avatars/ToastFace.png"
-                  className="h-14 w-14 rounded-full border-2 border-neutral-500"
-                  alt="User avatar"
-                />
-              )}
+              <Link to={"/user/settings"}>
+                {profile.avatar_filename ? (
+                  <img
+                    src={profile?.avatar_filename}
+                    className="h-14 w-14 rounded-full border-2 border-neutral-500 transition-transform hover:scale-105"
+                    alt="User avatar"
+                  />
+                ) : (
+                  <img
+                    src="./avatars/ToastFace.png"
+                    className="h-14 w-14 rounded-full border-2 border-neutral-500 transition-transform hover:scale-105"
+                    alt="User avatar"
+                  />
+                )}
+              </Link>
               <div className="text-sm">
                 <p className="text-neutral-200">Welcome,</p>
                 <p className="font-metal text-lg font-medium">

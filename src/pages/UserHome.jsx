@@ -8,6 +8,14 @@ const UserHome = () => {
         <h1 className="mb-6 font-metal text-5xl md:text-6xl">
           Trappenstein's Movie Crypt
         </h1>
+        <div className="flex gap-4">
+          <Link
+            to="/user/settings"
+            className="rounded-lg bg-blue-600 px-8 py-3 font-semibold shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-blue-700"
+          >
+            Account Settings
+          </Link>
+        </div>
       </section>
 
       {/* YouTube Videos Section */}
