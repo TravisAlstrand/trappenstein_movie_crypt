@@ -50,7 +50,7 @@ const WatchlistPage = () => {
   }
 
   return (
-    <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
+    <main className="mx-auto flex h-full min-h-screen max-w-7xl flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
       <h1 className="mb-6 font-metal text-5xl text-white md:text-6xl">
         Your Watchlist
       </h1>

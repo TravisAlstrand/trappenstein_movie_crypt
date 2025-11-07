@@ -57,14 +57,14 @@ const SearchPage = () => {
   }, [searchQuery, currentPage]);
 
   return (
-    <main className="flex h-full min-h-screen flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
+    <main className="mx-auto flex h-full min-h-screen max-w-7xl flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
       <h1 className="mb-6 font-metal text-5xl text-white md:text-6xl">
         Movie Search
       </h1>
       {/* SEARCH BAR */}
       <form className="mb-8 flex w-full justify-center" onSubmit={handleSubmit}>
         <input
-          className="mr-2 w-full rounded-lg bg-neutral-700 px-4 py-2 text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+          className="mr-2 w-full max-w-56 rounded-lg bg-neutral-700 px-4 py-2 text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
           type="search"
           id="search"
           name="search"

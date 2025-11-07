@@ -26,7 +26,7 @@ const SignUp = () => {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-800 px-4 font-montserrat">
+    <main className="flex min-h-screen max-w-7xl items-center justify-center bg-neutral-800 px-4 font-montserrat">
       <div className="w-full max-w-md">
         <h1 className="mb-8 text-center font-metal text-5xl text-white md:text-6xl">
           Trappenstein's Movie Crypt
