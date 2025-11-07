@@ -26,16 +26,23 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        {/* VARIABLE HOME PAGE */}
-        {user ? (
-          <Route path="/" element={<Navigate to="/user/home" replace />} />
-        ) : (
-          <Route path="/" element={<LandingPage />} />
-        )}
+        {/* LANDING PAGE - ACCESSIBLE TO ALL */}
+        <Route
+          path="/"
+          element={
+            user ? <Navigate to="/user/home" replace /> : <LandingPage />
+          }
+        />
 
         {/* PUBLIC ROUTES */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/user/home" replace /> : <Login />}
+        />
+        <Route
+          path="/signup"
+          element={user ? <Navigate to="/user/home" replace /> : <SignUp />}
+        />
 
         {/* AUTHENTICATED ROUTES */}
         <Route element={<ProtectedRoute />}>

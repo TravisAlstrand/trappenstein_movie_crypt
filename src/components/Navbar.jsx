@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { useUserProfile } from "../context/UserProfileContext";
 import { handleSignOut } from "../utils/supabaseFunctions";
@@ -10,11 +10,19 @@ import { HiOutlineX } from "react-icons/hi";
 const Navbar = () => {
   const { user } = useUser();
   const { profile } = useUserProfile();
+  const navigate = useNavigate();
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMenu = () => {
     setMobileNavOpen(!mobileNavOpen);
+  };
+
+  const signUserOut = async () => {
+    const { error } = await handleSignOut();
+    if (!error) {
+      navigate("/", { replace: true });
+    }
   };
 
   // FOR TESTING
@@ -140,7 +148,7 @@ const Navbar = () => {
                   Search
                 </NavLink>
                 <button
-                  onClick={() => handleSignOut()}
+                  onClick={() => signUserOut()}
                   className="cursor-pointer rounded-lg bg-neutral-800 px-4 py-2 transition-all hover:scale-105 hover:bg-neutral-700"
                 >
                   Sign Out
@@ -250,7 +258,7 @@ const Navbar = () => {
                 Search
               </NavLink>
               <button
-                onClick={() => handleSignOut()}
+                onClick={() => signUserOut()}
                 className="cursor-pointer rounded-lg bg-neutral-600 px-4 py-2 text-left text-white transition-colors hover:bg-neutral-500"
               >
                 Sign Out

@@ -12,7 +12,7 @@ export const onAuthStateChange = (callback) => {
   const { data: listener } = supabase.auth.onAuthStateChange(
     (_event, session) => {
       callback(session?.user ?? null);
-    }
+    },
   );
   return listener.subscription;
 };
@@ -45,7 +45,8 @@ export const updateProfile = async (id, updates) => {
 };
 
 export const handleSignOut = async () => {
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
+  return { error };
 };
 
 export const handleAddMovieToWatchlist = async (movieData) => {
