@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { signUpUser } from "../utils/supabaseFunctions";
 
 const SignUp = () => {
@@ -25,17 +26,65 @@ const SignUp = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" id="email" required />
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" id="password" required />
-        <button type="submit">Sign Up</button>
-      </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
+    <main className="flex min-h-screen items-center justify-center bg-neutral-800 px-4 font-montserrat">
+      <div className="w-full max-w-md">
+        <h1 className="mb-8 text-center text-3xl font-bold text-white">
+          Create Account
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-lg bg-neutral-800 p-8 shadow-lg"
+        >
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium text-gray-300"
+            >
+              Email:
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              className="w-full rounded-lg bg-neutral-700 px-4 py-2 text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="password"
+              className="mb-2 block text-sm font-medium text-gray-300"
+            >
+              Password:
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              className="w-full rounded-lg bg-neutral-700 px-4 py-2 text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+          >
+            Sign Up
+          </button>
+          {error && (
+            <p className="mt-4 text-center text-sm text-red-400">{error}</p>
+          )}
+          {success && (
+            <p className="mt-4 text-center text-sm text-green-400">{success}</p>
+          )}
+        </form>
+        <p className="mt-6 text-center text-sm text-gray-400">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-400 hover:text-blue-300">
+            Log in
+          </Link>
+        </p>
+      </div>
     </main>
   );
 };
