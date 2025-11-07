@@ -17,13 +17,13 @@ const LandingPage = () => {
         <div className="flex gap-4">
           <Link
             to="/login"
-            className="rounded-lg bg-blue-600 px-8 py-3 font-semibold transition-colors hover:bg-blue-700"
+            className="rounded-lg bg-blue-600 px-8 py-3 font-semibold shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-blue-700"
           >
             Log In
           </Link>
           <Link
             to="/signup"
-            className="rounded-lg bg-gray-700 px-8 py-3 font-semibold transition-colors hover:bg-gray-600"
+            className="rounded-lg bg-gray-700 px-8 py-3 font-semibold shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-gray-600"
           >
             Sign Up
           </Link>
@@ -37,7 +37,7 @@ const LandingPage = () => {
         </h2>
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
           {/* Video 1 */}
-          <div className="overflow-hidden rounded-lg bg-neutral-800">
+          <div className="overflow-hidden rounded-lg bg-neutral-800 shadow-md shadow-neutral-950">
             <div className="relative aspect-video">
               <iframe
                 className="h-full w-full"
@@ -50,7 +50,7 @@ const LandingPage = () => {
           </div>
 
           {/* Video 2 */}
-          <div className="overflow-hidden rounded-lg bg-neutral-800">
+          <div className="overflow-hidden rounded-lg bg-neutral-800 shadow-md shadow-neutral-950">
             <div className="relative aspect-video">
               <iframe
                 className="h-full w-full"

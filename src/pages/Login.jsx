@@ -34,9 +34,12 @@ const Login = () => {
   return (
     <main className="flex min-h-screen items-center justify-center bg-neutral-800 px-4 font-montserrat">
       <div className="w-full max-w-md">
-        <h1 className="mb-8 text-center text-3xl font-bold text-white">
-          Welcome Back!
+        <h1 className="mb-8 text-center font-metal text-5xl text-white md:text-6xl">
+          Trappenstein's Movie Crypt
         </h1>
+        <h2 className="mb-8 text-center text-3xl font-bold text-white">
+          Welcome Back!
+        </h2>
         <form
           onSubmit={handleSubmit}
           className="rounded-lg bg-neutral-800 p-8 shadow-lg"
@@ -73,7 +76,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+            className="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white shadow-md shadow-neutral-950 transition-all hover:scale-105 hover:bg-blue-700"
           >
             Login
           </button>
