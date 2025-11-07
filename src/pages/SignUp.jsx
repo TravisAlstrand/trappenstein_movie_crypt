@@ -31,8 +31,8 @@ const SignUp = () => {
         <h1 className="mb-8 text-center font-metal text-5xl text-white md:text-6xl">
           Trappenstein's Movie Crypt
         </h1>
-        <h2 className="mb-8 text-center text-3xl font-bold text-white">
-          Welcome Back!
+        <h2 className="mb-8 text-center text-2xl font-bold text-white">
+          Create an Account
         </h2>
         <form
           onSubmit={handleSubmit}

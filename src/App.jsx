@@ -4,6 +4,7 @@ import { UserContext } from "./context/UserContext";
 
 // Components
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/PrivateRoute";
 
 // Pages
 import LandingPage from "./pages/LandingPage";
@@ -37,12 +38,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* AUTHENTICATED ROUTES */}
-        {/* TODO: ADD PROTECTED ROUTE */}
-        <Route path="/user/home" element={<UserHome />} />
-        <Route path="/user/settings" element={<UserSettingsPage />} />
-        <Route path="/user/watchlist" element={<WatchlistPage />} />
-        <Route path="/movies/search" element={<SearchPage />} />
-        <Route path="/movies/:id/details" element={<MovieDetailsPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/user/home" element={<UserHome />} />
+          <Route path="/user/settings" element={<UserSettingsPage />} />
+          <Route path="/user/watchlist" element={<WatchlistPage />} />
+          <Route path="/movies/search" element={<SearchPage />} />
+          <Route path="/movies/:id/details" element={<MovieDetailsPage />} />
+        </Route>
 
         {/* CATCH-ALL FOR NOT FOUND */}
         <Route path="*" element={<NotFound />} />

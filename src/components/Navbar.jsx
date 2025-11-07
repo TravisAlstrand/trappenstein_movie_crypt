@@ -36,7 +36,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex items-center gap-4">
               <Link to={"/user/settings"}>
-                {profile.avatar_filename ? (
+                {profile?.avatar_filename ? (
                   <img
                     src={profile?.avatar_filename}
                     className="h-14 w-14 rounded-full border-2 border-neutral-500 transition-transform hover:scale-105"
@@ -141,7 +141,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   onClick={() => handleSignOut()}
-                  className="cursor-pointer rounded-lg bg-neutral-800 px-4 py-2 transition-colors hover:bg-neutral-700"
+                  className="cursor-pointer rounded-lg bg-neutral-800 px-4 py-2 transition-all hover:scale-105 hover:bg-neutral-700"
                 >
                   Sign Out
                 </button>
