@@ -36,7 +36,7 @@ Trappenstein's Movie Crypt is a full-stack React application that allows users t
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/TravisAlstrand/trappenstein_site.git
+git clone https://github.com/TravisAlstrand/trappenstein_movie_crypt.git
 cd trappenstein-app
 ```
 
