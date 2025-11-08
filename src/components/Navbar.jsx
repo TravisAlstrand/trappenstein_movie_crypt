@@ -39,39 +39,56 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="relative z-50 bg-neutral-900 px-4 py-3 font-montserrat text-neutral-100 shadow-xl">
+      <header className="relative z-50 border-b border-neutral-700 bg-linear-to-r from-neutral-900 via-neutral-800 to-neutral-900 px-4 py-3 font-montserrat text-neutral-100 shadow-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {user ? (
-            <div className="flex items-center gap-4">
-              <Link to={"/user/settings"}>
-                {profile?.avatar_filename ? (
-                  <img
-                    src={profile?.avatar_filename}
-                    className="h-14 w-14 rounded-full border-2 border-neutral-500 transition-transform hover:scale-105"
-                    alt="User avatar"
-                  />
-                ) : (
-                  <img
-                    src="./avatars/ToastFace.png"
-                    className="h-14 w-14 rounded-full border-2 border-neutral-500 transition-transform hover:scale-105"
-                    alt="User avatar"
-                  />
-                )}
-              </Link>
-              <div className="text-sm">
-                <p className="text-neutral-200">Welcome,</p>
-                <p className="font-metal text-lg font-medium">
-                  {profile ? profile.username : user.email}
-                </p>
+            <>
+              {/* Left side - User Info */}
+              <div className="flex items-center gap-4">
+                <Link to={"/user/settings"} className="group">
+                  {profile?.avatar_filename ? (
+                    <img
+                      src={profile?.avatar_filename}
+                      className="h-12 w-12 rounded-full border-2 border-blue-500/50 shadow-lg transition-all group-hover:scale-110 group-hover:border-blue-400 md:h-14 md:w-14"
+                      alt="User avatar"
+                    />
+                  ) : (
+                    <img
+                      src="./avatars/ToastFace.png"
+                      className="h-12 w-12 rounded-full border-2 border-blue-500/50 shadow-lg transition-all group-hover:scale-110 group-hover:border-blue-400 md:h-14 md:w-14"
+                      alt="User avatar"
+                    />
+                  )}
+                </Link>
+                <div className="hidden text-sm sm:block">
+                  <p className="text-xs text-gray-400">Welcome back,</p>
+                  <p className="font-metal text-base font-medium text-blue-300 md:text-lg">
+                    {profile ? profile.username : user.email}
+                  </p>
+                </div>
               </div>
-            </div>
+
+              {/* Center - Brand Logo */}
+              <Link
+                to="/user/home"
+                className="group absolute left-1/2 -translate-x-1/2"
+              >
+                <h2 className="bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text font-metal text-lg font-bold text-transparent transition-all group-hover:from-blue-300 group-hover:to-purple-300 sm:text-xl xl:text-2xl">
+                  Trappenstein's Crypt
+                </h2>
+              </Link>
+            </>
           ) : (
-            <div className="text-xl font-bold text-neutral-900">Welcome!</div>
+            <Link to="/" className="group flex items-center gap-2">
+              <h2 className="bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text font-metal text-xl font-bold text-transparent transition-all group-hover:from-blue-300 group-hover:to-purple-300 md:text-2xl">
+                Trappenstein's Crypt
+              </h2>
+            </Link>
           )}
 
           {/* Mobile Nav Button */}
           <button
-            className="cursor-pointer text-2xl transition-colors hover:text-neutral-300 lg:hidden"
+            className="cursor-pointer rounded-lg bg-neutral-700/50 p-2 text-2xl transition-all hover:bg-neutral-600/50 hover:text-blue-300 lg:hidden"
             onClick={toggleMenu}
             aria-expanded={mobileNavOpen}
             aria-controls="mobile-menu"
@@ -83,11 +100,11 @@ const Navbar = () => {
           {/* Desktop Nav */}
           <nav className="hidden lg:block">
             {!user ? (
-              <ul className="flex items-center gap-8">
+              <ul className="flex items-center gap-6">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
+                    `font-medium transition-all hover:text-blue-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -97,7 +114,7 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
+                    `font-medium transition-all hover:text-blue-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -107,8 +124,8 @@ const Navbar = () => {
                 <NavLink
                   to="/signup"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
-                      isActive ? "text-blue-400" : ""
+                    `rounded-lg bg-linear-to-r from-blue-600 to-purple-600 px-6 py-2 font-semibold shadow-lg shadow-blue-900/30 transition-all hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-900/50 ${
+                      isActive ? "ring-2 ring-blue-400" : ""
                     }`
                   }
                 >
@@ -116,11 +133,11 @@ const Navbar = () => {
                 </NavLink>
               </ul>
             ) : (
-              <ul className="flex items-center gap-8">
+              <ul className="flex items-center gap-6">
                 <NavLink
                   to="/user/home"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
+                    `font-medium transition-all hover:text-blue-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -130,7 +147,7 @@ const Navbar = () => {
                 <NavLink
                   to="/user/watchlist"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
+                    `font-medium transition-all hover:text-blue-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -140,7 +157,7 @@ const Navbar = () => {
                 <NavLink
                   to="/movies/search"
                   className={({ isActive }) =>
-                    `transition-colors hover:text-neutral-300 ${
+                    `font-medium transition-all hover:text-blue-300 ${
                       isActive ? "text-blue-400" : ""
                     }`
                   }
@@ -149,7 +166,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   onClick={() => signUserOut()}
-                  className="cursor-pointer rounded-lg bg-neutral-800 px-4 py-2 transition-all hover:scale-105 hover:bg-neutral-700"
+                  className="cursor-pointer rounded-lg border border-neutral-600 bg-neutral-800/50 px-5 py-2 font-medium backdrop-blur-sm transition-all hover:scale-105 hover:border-red-500 hover:bg-red-900/30 hover:text-red-300"
                 >
                   Sign Out
                 </button>
@@ -162,7 +179,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {mobileNavOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black opacity-50"
+          className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
           aria-hidden="true"
           onClick={() => setMobileNavOpen(false)}
         />
@@ -173,27 +190,29 @@ const Navbar = () => {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
-        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-neutral-800 p-6 font-montserrat transition-transform duration-200 ease-in-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-72 transform border-l border-neutral-700 bg-linear-to-b from-neutral-900 to-neutral-800 p-6 font-montserrat shadow-2xl transition-transform duration-300 ease-in-out ${
           mobileNavOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <button
           onClick={() => setMobileNavOpen(false)}
-          className="absolute top-4 right-4 cursor-pointer text-2xl text-white transition-colors hover:text-neutral-200"
+          className="absolute top-4 right-4 cursor-pointer rounded-lg bg-neutral-700/50 p-2 text-2xl text-white transition-all hover:bg-neutral-600/50 hover:text-red-400"
           aria-label="Close menu"
         >
           <HiOutlineX />
         </button>
 
-        <nav className="mt-12">
+        <nav className="mt-16">
           {!user ? (
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-4">
               <NavLink
                 to="/"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg px-4 py-3 font-medium transition-all hover:bg-neutral-700/50 hover:text-blue-300 ${
+                    isActive
+                      ? "bg-neutral-700/50 text-blue-400"
+                      : "text-neutral-100"
                   }`
                 }
               >
@@ -203,8 +222,10 @@ const Navbar = () => {
                 to="/login"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg px-4 py-3 font-medium transition-all hover:bg-neutral-700/50 hover:text-blue-300 ${
+                    isActive
+                      ? "bg-neutral-700/50 text-blue-400"
+                      : "text-neutral-100"
                   }`
                 }
               >
@@ -214,8 +235,8 @@ const Navbar = () => {
                 to="/signup"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg bg-linear-to-r from-blue-600 to-purple-600 px-4 py-3 text-center font-semibold shadow-lg shadow-blue-900/30 transition-all hover:from-blue-700 hover:to-purple-700 ${
+                    isActive ? "ring-2 ring-blue-400" : ""
                   }`
                 }
               >
@@ -223,13 +244,15 @@ const Navbar = () => {
               </NavLink>
             </ul>
           ) : (
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-4">
               <NavLink
                 to="/user/home"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg px-4 py-3 font-medium transition-all hover:bg-neutral-700/50 hover:text-blue-300 ${
+                    isActive
+                      ? "bg-neutral-700/50 text-blue-400"
+                      : "text-neutral-100"
                   }`
                 }
               >
@@ -239,8 +262,10 @@ const Navbar = () => {
                 to="/user/watchlist"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg px-4 py-3 font-medium transition-all hover:bg-neutral-700/50 hover:text-blue-300 ${
+                    isActive
+                      ? "bg-neutral-700/50 text-blue-400"
+                      : "text-neutral-100"
                   }`
                 }
               >
@@ -250,8 +275,10 @@ const Navbar = () => {
                 to="/movies/search"
                 onClick={() => setMobileNavOpen(false)}
                 className={({ isActive }) =>
-                  `text-neutral-100 transition-colors hover:text-neutral-300 ${
-                    isActive ? "text-blue-400" : ""
+                  `rounded-lg px-4 py-3 font-medium transition-all hover:bg-neutral-700/50 hover:text-blue-300 ${
+                    isActive
+                      ? "bg-neutral-700/50 text-blue-400"
+                      : "text-neutral-100"
                   }`
                 }
               >
@@ -259,7 +286,7 @@ const Navbar = () => {
               </NavLink>
               <button
                 onClick={() => signUserOut()}
-                className="cursor-pointer rounded-lg bg-neutral-600 px-4 py-2 text-left text-white transition-colors hover:bg-neutral-500"
+                className="cursor-pointer rounded-lg border border-neutral-600 bg-neutral-800/50 px-4 py-3 text-left font-medium text-white transition-all hover:border-red-500 hover:bg-red-900/30 hover:text-red-300"
               >
                 Sign Out
               </button>

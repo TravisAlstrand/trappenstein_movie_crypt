@@ -43,23 +43,61 @@ const WatchlistPage = () => {
 
   if (loading) {
     return (
-      <main className="flex justify-center font-montserrat text-white">
-        Loading...
+      <main className="flex min-h-screen items-center justify-center bg-linear-to-b from-neutral-900 via-neutral-800 to-neutral-900 font-montserrat">
+        <div className="text-center">
+          <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+          <p className="text-xl text-gray-300">Loading your watchlist...</p>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto flex h-full min-h-screen max-w-7xl flex-col items-center bg-neutral-800 px-4 py-8 font-montserrat">
-      <h1 className="mb-6 font-metal text-5xl text-white md:text-6xl">
-        Your Watchlist
-      </h1>
-      <section className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </section>
+    <main className="mx-auto flex h-full min-h-screen max-w-7xl flex-col items-center bg-linear-to-b from-neutral-900 via-neutral-800 to-neutral-900 px-4 py-12 font-montserrat">
+      {/* Header Section */}
+      <div className="mb-8 text-center">
+        <h1 className="mb-3 bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text font-metal text-5xl text-transparent drop-shadow-lg md:text-6xl">
+          Your Watchlist
+        </h1>
+        <p className="text-lg text-gray-400">
+          {movies.length > 0
+            ? `${movies.length} ${movies.length === 1 ? "movie" : "movies"} waiting for you`
+            : "Your collection of movies to watch"}
+        </p>
+      </div>
+
+      {error && (
+        <div className="mb-8 w-full max-w-2xl rounded-lg bg-red-900/50 px-6 py-4 text-center text-red-300">
+          {error}
+        </div>
+      )}
+
+      {/* Movie Grid */}
+      {movies.length > 0 ? (
+        <section className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </section>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-16">
+          <div className="mb-6 rounded-2xl border-2 border-neutral-700 bg-neutral-900/50 p-12 text-center shadow-2xl">
+            <p className="mb-2 text-3xl">🎬</p>
+            <p className="mb-3 text-2xl font-semibold text-gray-300">
+              Your watchlist is empty
+            </p>
+            <p className="mb-6 text-gray-400">
+              Start adding movies you want to watch!
+            </p>
+            <a
+              href="/movies/search"
+              className="inline-block rounded-lg bg-linear-to-r from-blue-600 to-purple-600 px-8 py-3 font-semibold text-white shadow-lg shadow-blue-900/30 transition-all hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-900/50"
+            >
+              Search Movies
+            </a>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
