@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="bg-neutral-900 px-4 py-3 font-montserrat text-neutral-100 shadow-xl">
+      <header className="relative z-50 bg-neutral-900 px-4 py-3 font-montserrat text-neutral-100 shadow-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {user ? (
             <div className="flex items-center gap-4">

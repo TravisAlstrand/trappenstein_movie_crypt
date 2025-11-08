@@ -42,7 +42,7 @@ This project is part of my personal portfolio.
 
 ## 🔗 Links
 
-- **YouTube Channel**: [Trappenstein](https://youtube.com/@trappenstein)
+- **YouTube Channel**: [Trappenstein](https://www.youtube.com/@TrappensteinMovies)
 - **GitHub**: [TravisAlstrand](https://github.com/TravisAlstrand)
 
 ## 🙏 Acknowledgments
